@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Payment QR Code - Lucky Travels</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body {
+font-family: Arial, sans-serif;
+background-color: #e9ecef;
+display: flex;
+justify-content: center;
+align-items: center;
+min-height: 100vh;
+margin: 0;
+}
+.container {
+max-width: 500px;
+margin: 20px;
+padding: 30px;
+background-color: #ffffff;
+border-radius: 12px;
+box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+text-align: center;
+border-top: 5px solid #007bff;
+}
+h1 {
+color: #007bff;
+font-size: 28px;
+margin-bottom: 5px;
+}
+/* Style for the logo/image /
+.company-logo {
+display: block;
+margin: 0 auto 20px auto;
+border-radius: 6px;
+}
+/ Ensures static QR code is centered and sized correctly /
+.static-qr-code {
+display: block;
+margin: 20px auto;
+/ Definitive size for excellent scanning visibility /
+width: 250px;
+height: 250px;
+/ Add a fallback background and border */
+background-color: #f8f9fa;
+border: 1px solid #dee2e6;
+box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+border-radius: 8px;
+}
+
+.payee-info {
+font-size: 16px;
+color: #6c757d;
+margin-bottom: 25px;
+}
+#amountDisplay {
+font-size: 48px;
+font-weight: bold;
+color: #28a745;
+margin: 15px 0;
+display: block;
+}
+
+.action-button {
+display: inline-block;
+padding: 10px 20px;
+margin-top: 15px;
+border-radius: 6px;
+text-decoration: none;
+font-weight: bold;
+transition: background-color 0.3s ease;
+}
+.action-button.home {
+background-color: #6c757d;
+color: white;
+}
+.action-button.home:hover {
+background-color: #5a6268;
+}
+.mobile-link {
+display: block;
+margin-top: 25px;
+padding: 12px;
+background-color: #ffc107;
+color: #333;
+border-radius: 6px;
+text-decoration: none;
+font-weight: bold;
+box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+transition: background-color 0.3s ease;
+}
+.mobile-link:hover {
+background-color: #e0a800;
+}
+.note {
+font-size: 14px;
+color: #dc3545;
+margin-top: 15px;
+}
+</style>
+
+</head>
+<body>
+
+<div class="container">
+<h1>Complete Your Payment</h1>
+
+<!-- Logo: Fixed to use a direct placeholder image URL. -->
+
+<img src="https://www.google.com/search?q=https://placehold.co/100x50/007bff/ffffff%3Ftext%3DLUCKY%2BTRAVELS" alt="Lucky Travels Logo" class="company-logo">
+
+<div class="payee-info">
+Scan or click the link below to pay with your preferred UPI app.
+
+Payee: Lucky Travels
+
+</div>
+
+<span id="amountDisplay">₹<%= amount.toFixed(2) %></span>
+
+<div style="margin-bottom: 30px;">
+<!-- Size is controlled by CSS. Removed redundant inline style. -->
+<img src="/Images/qrcode.png" alt="Payment QR Code" class="static-qr-code" style="width: 500px; height: 700px;">
+</div>
+
+<p class="note">
+This code generates a dynamic UPI link. Please ensure the payment amount is correct before confirming.
+</p>
+
+<!-- Mobile/Desktop Deep Link Fallback Button -->
+
+<a href="#" id="deepLinkButton" class="mobile-link">
+Click to Pay on Mobile
+</a>
+
+<a href="/home" class="action-button home">
+Back to Home
+</a>
+
+</div>
+
+<script>
+const UPI_VPA = 'dhruvmishra@oksbi';
+const PAYEE_NAME = 'Lucky Travels';
+const CURRENCY = 'INR';
+const amount = parseFloat("<%= amount %>").toFixed(2);
+
+// --- UPI Link Generation (Fixed Template Literal Syntax) ---
+const transactionRef = TR_${Date.now()};
+
+// Fixed UPI parameters (used '&' instead of '&amp;')
+const upiUrl = upi://pay?pa=${UPI_VPA}&amp;pn=${encodeURIComponent(PAYEE_NAME)}&amp;am=${amount}&amp;cu=${CURRENCY}&amp;tr=${transactionRef};
+
+// Set the Deep Link button's href.
+document.getElementById('deepLinkButton').href = upiUrl;
+
+</script>
+
+</body>
+</html>

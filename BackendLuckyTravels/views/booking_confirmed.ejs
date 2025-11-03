@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Confirmed!</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+            color: #333;
+            text-align: center;
+        }
+        .container {
+            background-color: #fff;
+            padding: 30px;
+            max-width: 800px;
+            margin: 40px auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #007bff;
+            margin-bottom: 20px;
+        }
+        .vpa-details, .bank-details {
+            margin-top: 30px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            text-align: left;
+        }
+        .bank-details {
+            margin-top: 40px;
+            border-color: #f1c40f; /* Amber color for distinction */
+        }
+        .upi-link-button {
+            display: inline-block;
+            background-color: #2ecc71; /* Green for UPI */
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            margin-top: 15px;
+            transition: background-color 0.3s;
+        }
+        .upi-link-button:hover {
+            background-color: #27ae60;
+        }
+        .label {
+            font-weight: bold;
+            color: #555;
+        }
+        p strong {
+            color: #000;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Booking Confirmed!</h1>
+        <p>Your travel enquiry has been successfully received. Please complete your payment using the options below to finalize your booking.</p>
+        
+        <p class="label">Your unique **Booking Reference ID** is:</p>
+        <h2 style="color: #e74c3c;"><%= bookingId %></h2>
+        
+        <hr>
+
+        <h2>Choose Your Payment Method</h2>
+
+        <!-- UPI / GPay / PhonePe Details -->
+        <div class="vpa-details">
+            <h3 style="color: #2ecc71;">Instant Payment (UPI / GPay / PhonePe)</h3>
+            <p><strong>VPA:</strong> <span style="color: #007bff;"><%= upiId %></span></p>
+            <p style="font-size: 0.8em; color: #777;">(Please use your Booking ID **<%= bookingId %>** as the remarks/note during payment)</p>
+            
+            <!-- This button redirects to the server route to generate the dynamic UPI link -->
+            <a href="/generatePaymentLink?packageType=group&bookingId=<%= bookingId %>" class="upi-link-button" target="_blank">
+                Pay Now with UPI App (GPay/PhonePe)
+            </a>
+        </div>
+
+        <!-- Bank Transfer Details -->
+        <div class="bank-details">
+            <h3 style="color: #f39c12;">Bank Transfer Details (NEFT/IMPS)</h3>
+            <p><span class="label">Account Name:</span> <strong>Lucky Travels Pvt. Ltd.</strong></p>
+            <p><span class="label">Bank Name:</span> <strong>State Bank of India</strong></p>
+            <p><span class="label">Account Number:</span> <strong>9876543210987</strong></p>
+            <p><span class="label">IFSC Code:</span> <strong>SBIN0001234</strong></p>
+        </div>
+        
+        <p style="margin-top: 30px; font-size: 0.9em;">A confirmation email has also been sent to you and the owner with these details.</p>
+        <p><a href="/home" style="color: #007bff; text-decoration: none;">&larr; Go back to Home</a></p>
+    </div>
+</body>
+</html>

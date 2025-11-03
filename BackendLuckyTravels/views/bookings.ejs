@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<title>Booking Records</title>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; background-color: #f4f4f4; }
+h1 { text-align: center; color: #333; margin-bottom: 30px; }
+/* Make table responsive and scrollable on small screens /
+.table-container { overflow-x: auto; }
+table {
+width: 100%;
+min-width: 800px; / Ensure minimum width for better readability /
+margin: 0 auto;
+border-collapse: collapse;
+box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+background-color: white;
+}
+th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+th { background-color: #007bff; color: white; font-weight: bold; }
+tr:nth-child(even) { background-color: #f9f9f9; }
+tr:hover { background-color: #f1f1f1; }
+/ Style for the ID column */
+.id-column {
+width: 50px;
+text-align: center;
+font-weight: bold;
+}
+.back-link { display: block; margin-top: 30px; text-align: center; }
+.back-link a { text-decoration: none; padding: 10px 20px; border: 1px solid #ccc; border-radius: 5px; color: #333; background-color: #fff; }
+</style>
+</head>
+<body>
+
+<h1>All Booking Details</h1>
+
+<div class="table-container">
+    <table>
+        <thead>
+            <tr>
+                <th class="id-column">ID</th> <!-- New ID Column -->
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Stays (Days)</th>
+                <th>Requirements</th>
+                <th>Arrival Date</th>
+                <th>Departure Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% bookings.forEach(function(booking) { %>
+                <tr>
+                    <td class="id-column"><%= booking.id %></td> <!-- Displaying the ID -->
+                    <td><%= booking.name %></td>
+                    <td><%= booking.email %></td>
+                    <td><%= booking.phone %></td>
+                    <td><%= booking.stays %></td>
+                    <td><%= booking.requirements %></td>
+                    <!-- Assuming the MySQL results contain valid Date objects for EJS to format -->
+                    <td><%= booking.arrivaldate ? new Date(booking.arrivaldate).toLocaleDateString() : 'N/A' %></td>
+                    <td><%= booking.departuredate ? new Date(booking.departuredate).toLocaleDateString() : 'N/A' %></td>
+                </tr>
+            <% }); %>
+        </tbody>
+    </table>
+</div>
+
+<div class="back-link">
+    <a href="/home">Go to Home</a>
+</div>
+
+
+</body>
+</html>
