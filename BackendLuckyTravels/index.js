@@ -131,7 +131,8 @@ webapp.get("/Andamanpackage", (req, res) => res.render("Andamanpackage"));
 webapp.get("/Traveltools", (req, res) => res.render("Traveltools"));
 webapp.get("/clicktobook", (req, res) => res.render("clicktobook"));
 webapp.get("/groupclick", (req, res) => res.render("groupclick"));
-
+webapp.get("/Familypackage", (req, res) => res.render("Familypackage"));
+webapp.get("/Honeymoonpackage", (req, res) => res.render("Honeymoonpackage"));
 // ------------------ BOOKINGS LIST ------------------
 webapp.get("/bookings", async (req, res) => {
   try {
