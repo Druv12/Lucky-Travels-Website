@@ -116,6 +116,12 @@ webapp.get("/generatePaymentLink", (req, res) => {
   res.render("payment_qr", { amount });
 });
 
+// ------------------ DEFAULT ROOT REDIRECT ------------------
+webapp.get("/", (req, res) => {
+  res.redirect("/Home");
+});
+
+
 // ------------------ STATIC ROUTES ------------------
 webapp.get("/Home", (req, res) => res.render("Home"));
 webapp.get("/GeneralInformation", (req, res) => res.render("GeneralInformation"));
