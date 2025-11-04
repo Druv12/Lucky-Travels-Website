@@ -117,7 +117,7 @@ webapp.get("/generatePaymentLink", (req, res) => {
 });
 
 // ------------------ STATIC ROUTES ------------------
-webapp.get("/home", (req, res) => res.render("Home"));
+webapp.get("/Home", (req, res) => res.render("Home"));
 webapp.get("/GeneralInformation", (req, res) => res.render("GeneralInformation"));
 webapp.get("/Placeofintrest", (req, res) => res.render("Placeofintrest"));
 webapp.get("/HowtoReach", (req, res) => res.render("HowtoReach"));

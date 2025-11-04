@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html>
+<head>
 <meta charset="UTF-8">
 <title>Lucky Travel</title>
-<LINK rel="icon" href="lucky travel.2png.jpeg">
+<LINK rel="icon" href="/Images/Logo.jpeg">
 <link rel="stylesheet" href="style.css">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -22,7 +23,7 @@
 <header>
     <div class="header-container">
         <div class="logo-container">
-            <img src="lucky%20travel.2png.jpeg" alt="Lucky Travel Logo" width="100" height="50">
+            <img src="Images/Logo.jpeg" alt="Lucky Travel Logo" width="100" height="50">
         </div>
         <nav>
             <div class="mobile-nav">
@@ -91,43 +92,44 @@
         <th colspan="6">Doesnot Included </th>
     </tr>
     </thead>
-    <tabledata>
+    <tbody>
         <tr>
             <td>Accommodation in hotel/resort as provided in itinerary at Port Blair and Havelock with breakfast and all taxes.</td>
             <td>Expenses like personal nature, laundry, telephone bill, room service, alcoholic beverages, minibar charges,etc</td>
-    </tabledata>
-    <tabledata>
+    </tbody>
+    <tbody>
         <tr>
             <td>Sightseeing by Pvt. Ac cab (non-Sharing)</td>
             <td>Extra usage of vehicle other than mentioned in the package.</td>
-    </tabledata>
-    <tabledata>
+    </tbody>
+    <tbody>
         <tr>
             <td>Nil</td>
             <td>Professional camera ticket are not included.</td>
-    </tabledata>
-    <tabledata>
+    </tbody>
+    <tbody>
         <tr>
             <td>Cruise ticket for Island transfer</td>
             <td>Flight ticket not included. We recommend you to book your own flight ticket as it can be based on your flexibility and can be cheap. But still if you want us to book we can assist you in booking.</td>
-    </tabledata>
-    <tabledata>
+    </tbody>
+    <tbody>
         <tr>
             <td>All necessary entry ticket and permits</td>
             <td>Nil</td>
-    </tabledata>
-    <tabledata>
+    </tbody>
+    <tbody>
         <tr>
             <td>All services and taxes</td>
             <td>Nil</td>
-    </tabledata>
+    </tbody>
 </table>
 <br>
 <footer>
     <div class="footer-content">
         <div class="footer-label">
             <img src="18-Years.png" width="150px" height="150px" align="right">
-            <p><b><font style="Algerian" size="12px" color="orange">Lucky Travels</font></b></p>
+            <p style="font-family: Algerian; font-size: 24px; color: orange; font-weight: bold;">Lucky Travels</p>
+
         </div>
     </div>
     </div>
@@ -141,7 +143,7 @@
     function showNextImage() {
         images[currentIndex].style.display = 'none';
         currentIndex = (currentIndex + 1) % totalImages;
-        images[currentIndex].style.display = 'block';
+        images[currentIndex].style.display = 'flex';
     }
 
     setInterval(showNextImage, 1500);
