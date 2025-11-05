@@ -50,13 +50,32 @@ const sendBookingNotification = (bookingData) => {
 // ------------------ POSTGRESQL CONNECTION ------------------
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
-  ssl: { rejectUnauthorized: false }
+  ssl: { rejectUnauthorized: false },
+  connectionTimeoutMillis: 10000,
+  idleTimeoutMillis: 30000
 });
 
 (async () => {
   try {
     const result = await pool.query("SELECT NOW()");
     console.log("✅ Connected to PostgreSQL:", result.rows[0].now);
+    
+    // ✅ CREATE TABLE IF NOT EXISTS
+    await pool.query(`
+      CREATE TABLE IF NOT EXISTS bookingdetail (
+        id SERIAL PRIMARY KEY,
+        name VARCHAR(255) NOT NULL,
+        email VARCHAR(255) NOT NULL,
+        phone VARCHAR(50),
+        stays INTEGER,
+        requirements TEXT,
+        arrivaldate DATE,
+        departuredate DATE,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+      );
+    `);
+    console.log("✅ Table 'bookingdetail' is ready");
+    
   } catch (err) {
     console.error("❌ Database connection error:", err);
   }
